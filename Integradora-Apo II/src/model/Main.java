@@ -8,6 +8,8 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+
+        System.out.println("----------------------------------");
         System.out.println("1. Nueva partida");
         System.out.println("2. Ver puntaje");
         System.out.println("3. Salir");
@@ -20,8 +22,13 @@ public class Main {
 
             case 2:
 
+                
+
             case 3:
         }
+
     }
+
+
 }
 
