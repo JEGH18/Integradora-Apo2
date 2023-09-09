@@ -32,5 +32,45 @@ public class Partida {
             this.tiempoFin = System.currentTimeMillis();
         }
     }
+
+    public String getNombreJugador() {
+        return nombreJugador;
+    }
+
+    public void setNombreJugador(String nombreJugador) {
+        this.nombreJugador = nombreJugador;
+    }
+
+    public Tablero getTablero() {
+        return tablero;
+    }
+
+    public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+
+    public long getTiempoInicio() {
+        return tiempoInicio;
+    }
+
+    public void setTiempoInicio(long tiempoInicio) {
+        this.tiempoInicio = tiempoInicio;
+    }
+
+    public long getTiempoFin() {
+        return tiempoFin;
+    }
+
+    public void setTiempoFin(long tiempoFin) {
+        this.tiempoFin = tiempoFin;
+    }
+
+    public int getTuberiasUsadas() {
+        return tuberiasUsadas;
+    }
+
+    public void setTuberiasUsadas(int tuberiasUsadas) {
+        this.tuberiasUsadas = tuberiasUsadas;
+    }
 }
 
