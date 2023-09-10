@@ -19,14 +19,14 @@ public class Tablero {
         int filaF = (int) (Math.random() * 8);
         int columnaF = (int) (Math.random() * 8);
         this.tablero.get(filaF).set(columnaF, 'F');
-        int filaD = (int) (Math.random() * 8);
-        int columnaD = (int) (Math.random() * 8);
-        while (filaD == filaF && columnaD == columnaF) {
+        int filaD, columnaD;
+        do {
             filaD = (int) (Math.random() * 8);
             columnaD = (int) (Math.random() * 8);
-        }
+        } while (Math.abs(filaD - filaF) + Math.abs(columnaD - columnaF)<10); // Asegurar una distancia mínima de 10
         this.tablero.get(filaD).set(columnaD, 'D');
     }
+
 
     public void modificar(int fila, int columna, char valor) {
         // Verificar que la posición sea válida y no sea la fuente o el drenaje
