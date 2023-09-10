@@ -1,5 +1,6 @@
 package model;
 
+import iu.BST;
 import iu.Partida;
 import iu.Tablero;
 import iu.Node;
@@ -10,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
+        Partida partida = null;
 
         System.out.println("----------------------------------");
         System.out.println("1. Nueva partida");
@@ -23,7 +24,8 @@ public class Main {
             case 1:
                 System.out.println("Digite su nombre de usuario: ");
                 String nickname = scanner.nextLine();
-                Partida partida = new Partida(nickname);
+                partida = new Partida(nickname);
+                partida.mostrarTablero();
                 partida.iniciarNuevaPartida();
 
                 System.out.println("----------------------------------");
@@ -67,8 +69,13 @@ public class Main {
                 }
 
             case 2:
-
-                //Implementar calculo de Puntaje
+                if (partida != null) { // Verificar si se ha creado una partida
+                    BST bst = new BST();
+                    bst.mostrarEnOrden();
+                } else {
+                    System.out.println("Primero debes crear una partida.");
+                }
+                break;
 
             case 3:
                 System.out.println("Saliendo de PipeMania");
