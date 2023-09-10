@@ -16,7 +16,7 @@ public class Partida {
     }
 
     public void iniciarNuevaPartida() {
-        this.tablero = new Tablero();
+        this.tablero.mostrar();
         this.tiempoInicio = System.currentTimeMillis();
         this.tiempoFin = 0;
         this.tuberiasUsadas = 0;
@@ -31,6 +31,10 @@ public class Partida {
         if (this.tablero.esSolucionCorrecta()) {
             this.tiempoFin = System.currentTimeMillis();
         }
+    }
+
+    public void colocarTuberia(int fila, int columna, char tipo) {
+        this.tablero.colocarTuberia(fila, columna, tipo);
     }
 
     public String getNombreJugador() {

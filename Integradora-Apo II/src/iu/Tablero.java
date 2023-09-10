@@ -19,13 +19,32 @@ public class Tablero {
         int filaF = (int) (Math.random() * 8);
         int columnaF = (int) (Math.random() * 8);
         this.tablero.get(filaF).set(columnaF, 'F');
-        int filaD = (int) (Math.random() * 8);
-        int columnaD = (int) (Math.random() * 8);
-        while (filaD == filaF && columnaD == columnaF) {
+        int filaD, columnaD;
+        do {
             filaD = (int) (Math.random() * 8);
             columnaD = (int) (Math.random() * 8);
-        }
+        } while (Math.abs(filaD - filaF) + Math.abs(columnaD - columnaF) < 9); // Asegurar una distancia mínima de 5
         this.tablero.get(filaD).set(columnaD, 'D');
+    }
+
+    public void colocarTuberia(int fila, int columna, char tipo) {
+        //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
+        if (fila < 0 || fila > 7 || columna < 0 || columna > 7) {
+            System.out.println("Los valores de fila y columna deben estar entre 0 y 7.");
+            return;
+        }
+        //Se verifica que el usuario no ponga tuberías en el punto de inicio ni de fin
+        if (this.tablero.get(fila).get(columna) == 'F' || this.tablero.get(fila).get(columna) == 'D') {
+            System.out.println("No puedes colocar una tubería en la posición de la fuente o el drenaje.");
+            return;
+        }
+        //Se pide el tipo de tubería
+        if (tipo != '=' && tipo != '|' && tipo != 'o') {
+            System.out.println("El tipo de tubería debe ser '=', '||' o 'o'.");
+            return;
+        }
+        //Se coloca la tubería
+        this.tablero.get(fila).set(columna, tipo);
     }
 
     public void modificar(int fila, int columna, char valor) {
