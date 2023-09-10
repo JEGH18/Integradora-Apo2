@@ -24,7 +24,6 @@ public class Main {
                 System.out.println("Digite su nombre de usuario: ");
                 String nickname = scanner.nextLine();
                 Partida partida = new Partida(nickname);
-                partida.mostrarTablero();
                 partida.iniciarNuevaPartida();
 
                 System.out.println("----------------------------------");
@@ -36,7 +35,25 @@ public class Main {
                 int opcionCaso1 = scanner.nextInt();
                 switch (opcionCaso1) {
                     case 1:
-                        //Implementar "colocar Tuberia"
+                        //Se pide al usuario que ingrese la posición (fila y columna) donde quiere poner la tubería
+                        System.out.println("Introduce la fila donde deseas colocar la tubería:");
+                        int fila = scanner.nextInt();
+                        System.out.println("Introduce la columna donde deseas colocar la tubería:");
+                        int columna = scanner.nextInt();
+
+                        //Se limpia el buffer
+                        scanner.nextLine();
+
+                        //Se pide al usuario que ingrese el tipo de tubería que quiere colocar
+                        System.out.println("Introduce el tipo de tubería que deseas colocar ('=', '|', 'o'):");
+                        char tipo = scanner.nextLine().charAt(0);
+
+                        partida.colocarTuberia(fila, columna, tipo);
+
+
+                        //Se muestra el tablero después de poner la tubería
+                        partida.mostrarTablero();
+                        break;
                     case 2:
                         //Implementar "Simular"
                     case 3:
