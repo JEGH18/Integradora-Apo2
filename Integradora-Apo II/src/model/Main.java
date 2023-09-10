@@ -36,7 +36,7 @@ public class Main {
                 int opcionCaso1 = scanner.nextInt();
                 switch (opcionCaso1) {
                     case 1:
-                        //Implementar "colocar Tuberia"
+                        partida.ponerTuberia();
                     case 2:
                         //Implementar "Simular"
                     case 3:
