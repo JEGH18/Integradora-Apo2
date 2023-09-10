@@ -38,8 +38,13 @@ public class Main {
                         //Se pide al usuario que ingrese la posición (fila y columna) donde quiere poner la tubería
                         System.out.println("Introduce la fila donde deseas colocar la tubería:");
                         int fila = scanner.nextInt();
+
+                        fila-=1;
+
                         System.out.println("Introduce la columna donde deseas colocar la tubería:");
                         int columna = scanner.nextInt();
+
+                        columna-=1;
 
                         //Se limpia el buffer
                         scanner.nextLine();
