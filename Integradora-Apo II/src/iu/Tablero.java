@@ -65,12 +65,19 @@ public class Tablero {
         // Mostrar el tablero en consola
         System.out.println("  1 2 3 4 5 6 7 8");
         for (int i = 0; i < 8; i++) {
-            System.out.print((i + 1) + " ");
+            System.out.print(i + 1 + "|");
             for (int j = 0; j < 8; j++) {
-                System.out.print(this.tablero.get(i).get(j) + " ");
+                System.out.print(this.tablero.get(i).get(j) + "|");
             }
-            System.out.println();   
+            System.out.println();
         }
+    }
+
+    public void simular() {
+        // Implementar un algoritmo para simular el flujo de agua
+
+
+
     }
 }
 

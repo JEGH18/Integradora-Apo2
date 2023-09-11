@@ -12,7 +12,8 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         Partida partida = null;
-
+        System.out.println("----------------------------------");
+        System.out.println("    -> |   PIPE MANIA   | <-      ");
         System.out.println("----------------------------------");
         System.out.println("1. Nueva partida");
         System.out.println("2. Ver puntaje");
@@ -22,9 +23,13 @@ public class Main {
         int opcionPrincipal = Integer.parseInt(scanner.nextLine());
         switch (opcionPrincipal) {
             case 1:
+                System.out.println("----------------------------------");
                 System.out.println("Digite su nombre de usuario: ");
+                System.out.println("----------------------------------");
                 String nickname = scanner.nextLine();
                 partida = new Partida(nickname);
+
+                System.out.println("----------------------------------");
                 partida.iniciarNuevaPartida();
 
                 System.out.println("----------------------------------");

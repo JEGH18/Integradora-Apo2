@@ -55,6 +55,10 @@ public class Partida {
         this.tablero.colocarTuberia(fila, columna, tipo);
     }
 
+    public void simular() {
+        this.tablero.simular();
+    }
+
     public String getNombreJugador() {
         return nombreJugador;
     }
