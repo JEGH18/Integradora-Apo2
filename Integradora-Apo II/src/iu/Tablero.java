@@ -28,6 +28,7 @@ public class Tablero {
     }
 
     public void colocarTuberia(int fila, int columna, char tipo) {
+
         //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
         if (fila < 0 || fila > 7 || columna < 0 || columna > 7) {
             System.out.println("Los valores de fila y columna deben estar entre 0 y 7.");
@@ -45,6 +46,7 @@ public class Tablero {
         }
         //Se coloca la tubería
         this.tablero.get(fila).set(columna, tipo);
+
     }
 
     public void modificar(int fila, int columna, char valor) {
@@ -60,13 +62,17 @@ public class Tablero {
     }
 
     public void mostrar() {
-        for (LinkedList<Character> fila : this.tablero) {
-            for (char c : fila) {
-                System.out.print(c + " ");
+        // Mostrar el tablero en consola
+        System.out.println("  1 2 3 4 5 6 7 8");
+        for (int i = 0; i < 8; i++) {
+            System.out.print((i + 1) + " ");
+            for (int j = 0; j < 8; j++) {
+                System.out.print(this.tablero.get(i).get(j) + " ");
             }
-            System.out.println();
+            System.out.println();   
         }
     }
 }
+
 
 

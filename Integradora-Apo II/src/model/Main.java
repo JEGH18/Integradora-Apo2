@@ -25,7 +25,6 @@ public class Main {
                 System.out.println("Digite su nombre de usuario: ");
                 String nickname = scanner.nextLine();
                 partida = new Partida(nickname);
-                partida.mostrarTablero();
                 partida.iniciarNuevaPartida();
 
                 System.out.println("----------------------------------");
@@ -37,16 +36,34 @@ public class Main {
                 int opcionCaso1 = scanner.nextInt();
                 switch (opcionCaso1) {
                     case 1:
+
+                    boolean ponerTuberia = true;
+
+                    while (ponerTuberia = true) {
                         //Se pide al usuario que ingrese la posición (fila y columna) donde quiere poner la tubería
                         System.out.println("Introduce la fila donde deseas colocar la tubería:");
                         int fila = scanner.nextInt();
 
                         fila-=1;
 
+                        //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
+
+                        if (fila < 0 || fila > 7) {
+                            System.out.println("Los valores de fila y columna deben estar entre 0 y 7.");
+                            return;
+                        }
+
                         System.out.println("Introduce la columna donde deseas colocar la tubería:");
                         int columna = scanner.nextInt();
 
                         columna-=1;
+
+                        //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
+
+                        if (columna < 0 || columna > 7) {
+                            System.out.println("Los valores de fila y columna deben estar entre 0 y 7.");
+                            return;
+                        }
 
                         //Se limpia el buffer
                         scanner.nextLine();
@@ -60,7 +77,17 @@ public class Main {
 
                         //Se muestra el tablero después de poner la tubería
                         partida.mostrarTablero();
-                        break;
+
+                        //Se verifica si el usuario quiere poner otra tubería
+                        System.out.println("¿Deseas poner otra tubería? (S/N)");
+                        String respuesta = scanner.nextLine();
+
+                        if (respuesta == "N" || respuesta == "n") {
+                            ponerTuberia = false;    
+                        }
+                    }
+                    
+                    break;
                     case 2:
                         //Implementar "Simular"
                     case 3:
