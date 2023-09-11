@@ -3,6 +3,8 @@ package iu;
 public class Node {
 
     private int valor;
+    private Partida partida;
+    private int puntos;
     private Node arriba;
     private Node abajo;
     private Node izquierda;
@@ -10,8 +12,14 @@ public class Node {
     private Node next;
     private Node previous;
 
-    public Node(int valor) {
+    public Node(int puntos, int valor, Partida partida) {
         this.valor = valor;
+        this.arriba = null;
+        this.abajo = null;
+        this.izquierda = null;
+        this.derecha = null;
+        this.partida = partida;
+        this.puntos = puntos;
     }
 
     public int getValor() {
@@ -20,6 +28,22 @@ public class Node {
 
     public void setValor(int valor) {
         this.valor = valor;
+    }
+
+    public Partida getPartida() {
+        return partida;
+    }
+
+    public void setPartida(Partida partida) {
+        this.partida = partida;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
     }
 
     public Node getArriba() {
