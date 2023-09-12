@@ -44,7 +44,7 @@ public class Main {
 
                     boolean ponerTuberia = true;
 
-                    while (ponerTuberia = true) {
+                    while (ponerTuberia) {
                         //Se pide al usuario que ingrese la posición (fila y columna) donde quiere poner la tubería
                         System.out.println("Introduce la fila donde deseas colocar la tubería:");
                         int fila = scanner.nextInt();
@@ -87,8 +87,8 @@ public class Main {
                         System.out.println("¿Deseas poner otra tubería? (S/N)");
                         String respuesta = scanner.nextLine();
 
-                        if (respuesta == "N" || respuesta == "n") {
-                            ponerTuberia = false;    
+                        if (respuesta.equals("N") || respuesta.equals("n")) {
+                            ponerTuberia = false;
                         }
                     }
                     
