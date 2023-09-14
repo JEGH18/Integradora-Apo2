@@ -75,7 +75,7 @@ public class Tablero {
         // Realizar una búsqueda en profundidad o en amplitud desde la fuente
         return dfs(filaF, columnaF);
     }
-    
+
     private boolean dfs(int fila, int columna) {
         // Verificar si hemos llegado al drenaje (D)
         if (this.tablero.get(fila).get(columna) == 'D') {
@@ -102,11 +102,11 @@ public class Tablero {
         }
 
 
-        
+
         // Realizar una búsqueda en profundidad o en amplitud desde la fuente
         dfs(filaF, columnaF);
     }
-    
+
 
     public void mostrar() {
         // Mostrar el tablero en consola
@@ -121,6 +121,3 @@ public class Tablero {
     }
 
 }
-
-
-

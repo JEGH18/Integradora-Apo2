@@ -33,98 +33,103 @@ public class Main {
                 System.out.println("----------------------------------");
                 partida.iniciarNuevaPartida();
 
-                
+
 
                 boolean mostrarMenuJuego = true;
                 while (mostrarMenuJuego){
-                System.out.println("----------------------------------");
-                System.out.println("1. Poner Tuberia");
-                System.out.println("2. Simular");
-                System.out.println("3. Salir");
-                System.out.println("----------------------------------");
+                    System.out.println("----------------------------------");
+                    System.out.println("1. Poner Tuberia");
+                    System.out.println("2. Simular");
+                    System.out.println("3. Salir");
+                    System.out.println("----------------------------------");
 
-                int opcionCaso1 = scanner.nextInt();
+                    int opcionCaso1 = scanner.nextInt();
 
-                switch (opcionCaso1) {
+                    switch (opcionCaso1) {
 
-                    case 1:
+                        case 1:
 
-                    boolean ponerTuberia = true;
-                    while (ponerTuberia) {
-                        //Se pide al usuario que ingrese la posición (fila y columna) donde quiere poner la tubería
-                        System.out.println("Introduce la fila donde deseas colocar la tubería:");
-                        int fila = scanner.nextInt();
+                            boolean ponerTuberia = true;
+                            while (ponerTuberia) {
+                                //Se pide al usuario que ingrese la posición (fila y columna) donde quiere poner la tubería
+                                System.out.println("Introduce la fila donde deseas colocar la tubería:");
+                                int fila = scanner.nextInt();
 
-                        fila -= 1;
+                                fila -= 1;
 
-                        //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
+                                //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
 
-                        if (fila < 0 || fila > 7) {
-                            System.out.println("Los valores de fila y columna deben estar entre 0 y 7.");
-                            return;
-                        }
+                                if (fila < 0 || fila > 7) {
+                                    System.out.println("Los valores de fila y columna deben estar entre 0 y 7.");
+                                    return;
+                                }
 
-                        System.out.println("Introduce la columna donde deseas colocar la tubería:");
-                        int columna = scanner.nextInt();
+                                System.out.println("Introduce la columna donde deseas colocar la tubería:");
+                                int columna = scanner.nextInt();
 
-                        columna -= 1;
+                                columna -= 1;
 
-                        //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
+                                //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
 
-                        if (columna < 0 || columna > 7) {
-                            System.out.println("Los valores de fila y columna deben estar entre 0 y 7.");
-                            return;
-                        }
+                                if (columna < 0 || columna > 7) {
+                                    System.out.println("Los valores de fila y columna deben estar entre 0 y 7.");
+                                    return;
+                                }
 
-                        //Se limpia el buffer
-                        scanner.nextLine();
+                                //Se limpia el buffer
+                                scanner.nextLine();
 
-                        //Se pide al usuario que ingrese el tipo de tubería que quiere colocar
-                        System.out.println("Introduce el tipo de tubería que deseas colocar ('=', '|', 'o'):");
-                        char tipo = scanner.nextLine().charAt(0);
+                                //Se pide al usuario que ingrese el tipo de tubería que quiere colocar
+                                System.out.println("Introduce el tipo de tubería que deseas colocar ('=', '|', 'o'):");
+                                char tipo = scanner.nextLine().charAt(0);
 
-                        partida.colocarTuberia(fila, columna, tipo);
+                                partida.colocarTuberia(fila, columna, tipo);
 
 
-                        //Se muestra el tablero después de poner la tubería
-                        partida.mostrarTablero();
+                                //Se muestra el tablero después de poner la tubería
+                                partida.mostrarTablero();
 
-                        //Se verifica si el usuario quiere poner otra tubería
-                        System.out.println("¿Deseas poner otra tubería? (S/N)");
-                        String respuesta = scanner.nextLine();
+                                //Se verifica si el usuario quiere poner otra tubería
+                                System.out.println("¿Deseas poner otra tubería? (S/N)");
+                                String respuesta = scanner.nextLine();
 
-                        if (respuesta.equals("N") || respuesta.equals("n")) {
-                            ponerTuberia = false;
-                        }
+                                if (respuesta.equals("N") || respuesta.equals("n")) {
+                                    ponerTuberia = false;
+                                }
+                            }
+                            partida.simular();
+                            if (partida.esSolucionCorrecta()) {
+                                System.out.println("La solución es correcta");
+                            } else {
+                                System.out.println("La solución no es correcta");
+                            }
+                            mostrarMenuJuego=false;
+
+
+                            break;
+
+                        case 2:
+                            System.out.println("Simulando...");
+                            partida.simular();
+                            if (partida.esSolucionCorrecta()) {
+                                partida.mostrarResultados();
+                            } else {
+                                System.out.println("La solución no es correcta");
+                            }
+                            mostrarMenuJuego = false;
+                            break;
+
+                        case 3:
+                            System.out.println("Saliendo de PipeMania");
+                            System.exit(0);
+                            mostrarMenuJuego = false;
+                            break;
+
+                        default:
+                            System.out.println("Opción inválida");
+                            break;
                     }
-                        if (partida.esSolucionCorrecta()) {
-                            System.out.println("La solución es correcta");
-                        } else {
-                            ponerTuberia = false;
-                            System.out.println("La solución no es correcta");
-                        }
-
-
-                    break;
-
-                    case 2:
-                        System.out.println("Simulando...");
-                        partida.simular();
-                        mostrarMenuJuego = false;
-                    break;
-
-                        
-                    case 3:
-                        System.out.println("Saliendo de PipeMania");
-                        System.exit(0);
-                        mostrarMenuJuego = false;
-                    break;
-
-                    default:
-                        System.out.println("Opción inválida");
-                    break;
                 }
-            }
 
             case 2:
                 if (partida != null) { // Verificar si se ha creado una partida
@@ -141,15 +146,14 @@ public class Main {
                 break;
 
             default:
-            System.out.println("Opción inválida");
-            break;
+                System.out.println("Opción inválida");
+                break;
         }
 
 
-        
+
 
     }
 
 
 }
-
