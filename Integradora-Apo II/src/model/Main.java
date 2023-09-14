@@ -50,12 +50,12 @@ public class Main {
                     case 1:
 
                     boolean ponerTuberia = true;
-                    while (ponerTuberia = true) {
+                    while (ponerTuberia) {
                         //Se pide al usuario que ingrese la posición (fila y columna) donde quiere poner la tubería
                         System.out.println("Introduce la fila donde deseas colocar la tubería:");
                         int fila = scanner.nextInt();
 
-                        fila-=1;
+                        fila -= 1;
 
                         //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
 
@@ -67,7 +67,7 @@ public class Main {
                         System.out.println("Introduce la columna donde deseas colocar la tubería:");
                         int columna = scanner.nextInt();
 
-                        columna-=1;
+                        columna -= 1;
 
                         //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
 
@@ -96,13 +96,14 @@ public class Main {
                         if (respuesta.equals("N") || respuesta.equals("n")) {
                             ponerTuberia = false;
                         }
-
+                    }
                         if (partida.esSolucionCorrecta()) {
                             System.out.println("La solución es correcta");
                         } else {
+                            ponerTuberia = false;
                             System.out.println("La solución no es correcta");
                         }
-                    }
+
 
                     break;
 
