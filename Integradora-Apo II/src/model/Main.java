@@ -21,6 +21,7 @@ public class Main {
         System.out.println("----------------------------------");
 
         int opcionPrincipal = Integer.parseInt(scanner.nextLine());
+
         switch (opcionPrincipal) {
             case 1:
                 System.out.println("----------------------------------");
@@ -32,6 +33,10 @@ public class Main {
                 System.out.println("----------------------------------");
                 partida.iniciarNuevaPartida();
 
+                
+
+                boolean mostrarMenuJuego = true;
+                while (mostrarMenuJuego){
                 System.out.println("----------------------------------");
                 System.out.println("1. Poner Tuberia");
                 System.out.println("2. Simular");
@@ -39,12 +44,13 @@ public class Main {
                 System.out.println("----------------------------------");
 
                 int opcionCaso1 = scanner.nextInt();
+
                 switch (opcionCaso1) {
+
                     case 1:
 
                     boolean ponerTuberia = true;
-
-                    while (ponerTuberia) {
+                    while (ponerTuberia = true) {
                         //Se pide al usuario que ingrese la posición (fila y columna) donde quiere poner la tubería
                         System.out.println("Introduce la fila donde deseas colocar la tubería:");
                         int fila = scanner.nextInt();
@@ -90,15 +96,34 @@ public class Main {
                         if (respuesta.equals("N") || respuesta.equals("n")) {
                             ponerTuberia = false;
                         }
+
+                        if (partida.esSolucionCorrecta()) {
+                            System.out.println("La solución es correcta");
+                        } else {
+                            System.out.println("La solución no es correcta");
+                        }
                     }
-                    
+
                     break;
+
                     case 2:
-                        //Implementar "Simular"
+                        System.out.println("Simulando...");
+                        partida.simular();
+                        mostrarMenuJuego = false;
+                    break;
+
+                        
                     case 3:
                         System.out.println("Saliendo de PipeMania");
                         System.exit(0);
+                        mostrarMenuJuego = false;
+                    break;
+
+                    default:
+                        System.out.println("Opción inválida");
+                    break;
                 }
+            }
 
             case 2:
                 if (partida != null) { // Verificar si se ha creado una partida
@@ -112,7 +137,13 @@ public class Main {
             case 3:
                 System.out.println("Saliendo de PipeMania");
                 System.exit(0);
+                break;
+
+            default:
+            System.out.println("Opción inválida");
+            break;
         }
+
 
         
 

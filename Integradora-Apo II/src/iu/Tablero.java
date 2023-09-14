@@ -23,7 +23,7 @@ public class Tablero {
         do {
             filaD = (int) (Math.random() * 8);
             columnaD = (int) (Math.random() * 8);
-        } while (Math.abs(filaD - filaF) + Math.abs(columnaD - columnaF) < 9); // Asegurar una distancia mínima de 5
+        } while (Math.abs(filaD - filaF) + Math.abs(columnaD - columnaF) < 2); // Asegurar una distancia mínima de 10
         this.tablero.get(filaD).set(columnaD, 'D');
     }
 
@@ -58,8 +58,55 @@ public class Tablero {
 
     public boolean esSolucionCorrecta() {
         // Implementar un algoritmo para verificar si la solución es correcta
+        // Encontrar la posición de la fuente (F)
+        int filaF = -1, columnaF = -1;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (this.tablero.get(i).get(j) == 'F') {
+                    filaF = i;
+                    columnaF = j;
+                    break;
+                }
+            }
+            if (filaF != -1) {
+                break;
+            }
+        }
+        // Realizar una búsqueda en profundidad o en amplitud desde la fuente
+        return dfs(filaF, columnaF);
+    }
+    
+    private boolean dfs(int fila, int columna) {
+        // Verificar si hemos llegado al drenaje (D)
+        if (this.tablero.get(fila).get(columna) == 'D') {
+            return true;
+        }
         return false;
     }
+
+    public void simular() {
+        // Implementar un algoritmo para simular el flujo de agua
+        // Encontrar la posición de la fuente (F)
+        int filaF = -1, columnaF = -1;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j< 8; j++) {
+                if (this.tablero.get(i).get(j) == 'F') {
+                    filaF = i;
+                    columnaF = j;
+                    break;
+                }
+            }
+            if (filaF != -1) {
+                break;
+            }
+        }
+
+
+        
+        // Realizar una búsqueda en profundidad o en amplitud desde la fuente
+        dfs(filaF, columnaF);
+    }
+    
 
     public void mostrar() {
         // Mostrar el tablero en consola
@@ -73,12 +120,6 @@ public class Tablero {
         }
     }
 
-    public void simular() {
-        // Implementar un algoritmo para simular el flujo de agua
-
-
-
-    }
 }
 
 

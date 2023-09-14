@@ -24,7 +24,6 @@ public class Partida {
     this.tablero.mostrar();
     }
 
-
     public Partida(String nombreJugador) {
         this.nombreJugador = nombreJugador;
         this.tablero = new Tablero();
@@ -57,6 +56,17 @@ public class Partida {
 
     public void simular() {
         this.tablero.simular();
+    }
+
+    public boolean esSolucionCorrecta() {
+        return this.tablero.esSolucionCorrecta();
+    }
+
+    public void mostrarResultados() {
+        System.out.println("Resultados de la partida:");
+        System.out.println("Nombre del jugador: " + this.nombreJugador);
+        System.out.println("Tiempo de la partida: " + (this.tiempoFin - this.tiempoInicio) / 1000 + " segundos");
+        System.out.println("Tuberías usadas: " + this.tuberiasUsadas);
     }
 
     public String getNombreJugador() {
