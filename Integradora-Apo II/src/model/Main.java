@@ -94,7 +94,14 @@ public class Main {
 
                                     //Se verifica si el usuario quiere poner otra tubería
                                     System.out.println("¿Deseas poner otra tubería? (S/N)");
+                                    String respuesta1 = "S";
+                                    String respuesta2 = "N";
                                     String respuesta = scanner.nextLine();
+
+                                    if(!respuesta.equalsIgnoreCase(respuesta1) && !respuesta.equalsIgnoreCase(respuesta2)){
+                                        System.out.println("ATENCIÓN \n Debe ingresar carácteres válidos: S/N ");
+                                        System.exit(1);
+                                    }
 
                                     if (respuesta.equals("N") || respuesta.equals("n")) {
                                         ponerTuberia = false;
@@ -107,7 +114,7 @@ public class Main {
                                     System.out.println("La solución no es correcta");
                                 }
                                 mostrarMenuJuego = false;
-                                mostrarMenuPrincipal = true;
+
 
 
                                 break;
