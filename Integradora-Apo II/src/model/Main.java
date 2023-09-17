@@ -12,6 +12,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         Partida partida = null;
+        BST bst = new BST();
 
         boolean mostrarMenuPrincipal = true;
         while (mostrarMenuPrincipal) {
@@ -94,7 +95,14 @@ public class Main {
 
                                     //Se verifica si el usuario quiere poner otra tubería
                                     System.out.println("¿Deseas poner otra tubería? (S/N)");
+                                    String respuesta1 = "S";
+                                    String respuesta2 = "N";
                                     String respuesta = scanner.nextLine();
+
+                                    if(!respuesta.equalsIgnoreCase(respuesta1) && !respuesta.equalsIgnoreCase(respuesta2)){
+                                        System.out.println("ATENCIÓN \n Debe ingresar carácteres válidos: S/N ");
+                                        System.exit(1);
+                                    }
 
                                     if (respuesta.equals("N") || respuesta.equals("n")) {
                                         ponerTuberia = false;
@@ -106,8 +114,11 @@ public class Main {
                                 } else {
                                     System.out.println("La solución no es correcta");
                                 }
+                                int tuberiasUsadas = partida.getTuberiasUsadas();
+                                int tiempoEnSegundos = partida.getTiempoEnSegundos();
+                                bst.agregarPuntaje(tuberiasUsadas, tiempoEnSegundos, partida);
                                 mostrarMenuJuego = false;
-                                mostrarMenuPrincipal = true;
+
 
 
                                 break;
@@ -120,26 +131,24 @@ public class Main {
                                 } else {
                                     System.out.println("La solución no es correcta");
                                 }
-                                mostrarMenuJuego = false;
-                                mostrarMenuPrincipal = true;
                                 break;
 
                             case 3:
                                 System.out.println("Saliendo de PipeMania");
                                 System.exit(0);
                                 mostrarMenuJuego = false;
-                                mostrarMenuPrincipal = true;
                                 break;
 
                             default:
                                 System.out.println("Opción inválida");
                                 break;
+
                         }
+                        mostrarMenuPrincipal = true;
                     }
 
                 case 2:
                     if (partida != null) { // Verificar si se ha creado una partida
-                        BST bst = new BST();
                         bst.mostrarEnOrden();
                     } else {
                         System.out.println("Primero debes crear una partida.");

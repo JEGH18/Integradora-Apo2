@@ -12,8 +12,8 @@ public class Node {
     private Node next;
     private Node previous;
 
-    public Node(int puntos, int valor, Partida partida) {
-        this.valor = valor;
+    public Node(int puntos, String valor, Partida partida) {
+        this.valor = this.valor;
         this.arriba = null;
         this.abajo = null;
         this.izquierda = null;
@@ -93,4 +93,5 @@ public class Node {
     public void setPrevious(Node previous) {
         this.previous = previous;
     }
+
 }

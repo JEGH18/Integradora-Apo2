@@ -50,6 +50,11 @@ public class Partida {
         }
     }
 
+    public int getPuntos() {
+        long tiempoEnSegundos = (tiempoFin - tiempoInicio) / 1000;
+        return (100 - tuberiasUsadas) * 10 - (int)tiempoEnSegundos;
+    }
+
     public void colocarTuberia(int fila, int columna, char tipo) {
         this.tablero.colocarTuberia(fila, columna, tipo);
     }
@@ -72,6 +77,8 @@ public class Partida {
     public String getNombreJugador() {
         return nombreJugador;
     }
+
+
 
     public void setNombreJugador(String nombreJugador) {
         this.nombreJugador = nombreJugador;
@@ -103,6 +110,10 @@ public class Partida {
 
     public int getTuberiasUsadas() {
         return tuberiasUsadas;
+    }
+
+    public int getTiempoEnSegundos() {
+        return (int) ((this.tiempoFin - this.tiempoInicio));
     }
 
     public void setTuberiasUsadas(int tuberiasUsadas) {

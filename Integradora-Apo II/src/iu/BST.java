@@ -1,5 +1,10 @@
 package iu;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class BST {
     private Node root;
 
@@ -7,11 +12,12 @@ public class BST {
         this.root = null;
     }
 
-    public void agregarPuntaje(int puntos, int valor, Partida partida) {
-        root = insertar(root, puntos, valor, partida);
+    public void agregarPuntaje(int tuberiasUsadas, int tiempoEnSegundos, Partida partida) {
+        int puntos = (100 - tuberiasUsadas) * 10 - tiempoEnSegundos;
+        root = insertar(root, puntos, partida.getNombreJugador(), partida);
     }
 
-    private Node insertar(Node nodo, int puntos, int valor, Partida partida) {
+    private Node insertar(Node nodo, int puntos, String valor, Partida partida) {
         if (nodo == null) {
             return new Node(puntos, valor, partida);
         }
@@ -26,9 +32,11 @@ public class BST {
 
         return nodo;
     }
+    private int contadorJugadores;
 
     // Método para mostrar el árbol en orden
     public void mostrarEnOrden() {
+        this.contadorJugadores = 1;
         inOrden(root);
     }
 
@@ -36,7 +44,12 @@ public class BST {
     private void inOrden(Node nodo) {
         if (nodo != null) {
             inOrden(nodo.getIzquierda());
-            System.out.print(nodo.getValor() + " ");
+            Partida partida = nodo.getPartida();
+            int tuberiasUsadas = partida.getTuberiasUsadas();
+            int tiempoEnSegundos = partida.getTiempoEnSegundos();
+            int puntos = (100 - tuberiasUsadas) * 10 - tiempoEnSegundos;
+            System.out.print(this.contadorJugadores + ". Jugador: " + nodo.getValor() + ", Puntos: " + puntos + "\n");
+            this.contadorJugadores++;
             inOrden(nodo.getDerecha());
         }
     }
