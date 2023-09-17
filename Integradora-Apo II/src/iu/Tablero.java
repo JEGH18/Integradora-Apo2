@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 public class Tablero {
     private LinkedList<LinkedList<Character>> tablero;
+    private Partida partida;
 
     public Tablero() {
         this.tablero = new LinkedList<>();
@@ -27,8 +28,7 @@ public class Tablero {
         this.tablero.get(filaD).set(columnaD, 'D');
     }
 
-    public void colocarTuberia(int fila, int columna, char tipo) {
-
+    public void colocarTuberiaEnTablero(int fila, int columna, char tipo, Partida partida) {
         //Se verifica que los valores ingresados por el usuario sean menores que 7 y mayores a 0
         if (fila < 0 || fila > 7 || columna < 0 || columna > 7) {
             System.out.println("Los valores de fila y columna deben estar entre 0 y 7.");
@@ -41,12 +41,13 @@ public class Tablero {
         }
         //Se pide el tipo de tubería
         if (tipo != '=' && tipo != '|' && tipo != 'o') {
-            System.out.println("El tipo de tubería debe ser '=', '||' o 'o'.");
+            System.out.println("El tipo de tubería debe ser '=', '|', o 'o'.");
             return;
         }
         //Se coloca la tubería
         this.tablero.get(fila).set(columna, tipo);
 
+        partida.actualizarEstado(partida.getTuberiasUsadas() + 1);
     }
 
     public void modificar(int fila, int columna, char valor) {
@@ -100,13 +101,9 @@ public class Tablero {
                 break;
             }
         }
-
-
-
         // Realizar una búsqueda en profundidad o en amplitud desde la fuente
         dfs(filaF, columnaF);
     }
-
 
     public void mostrar() {
         // Mostrar el tablero en consola
@@ -119,5 +116,4 @@ public class Tablero {
             System.out.println();
         }
     }
-
 }

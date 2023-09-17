@@ -56,7 +56,7 @@ public class Partida {
     }
 
     public void colocarTuberia(int fila, int columna, char tipo) {
-        this.tablero.colocarTuberia(fila, columna, tipo);
+        this.tablero.colocarTuberiaEnTablero(fila, columna, tipo, this);
     }
 
     public void simular() {
@@ -77,8 +77,6 @@ public class Partida {
     public String getNombreJugador() {
         return nombreJugador;
     }
-
-
 
     public void setNombreJugador(String nombreJugador) {
         this.nombreJugador = nombreJugador;
@@ -113,7 +111,7 @@ public class Partida {
     }
 
     public int getTiempoEnSegundos() {
-        return (int) ((this.tiempoFin - this.tiempoInicio));
+        return (int) ((this.tiempoFin - this.tiempoInicio) / 1000);
     }
 
     public void setTuberiasUsadas(int tuberiasUsadas) {

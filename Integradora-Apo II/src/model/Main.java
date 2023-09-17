@@ -12,6 +12,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         Partida partida = null;
+        Tablero tablero = new Tablero();
         BST bst = new BST();
 
         boolean mostrarMenuPrincipal = true;
@@ -113,14 +114,12 @@ public class Main {
                                     System.out.println("La solución es correcta");
                                 } else {
                                     System.out.println("La solución no es correcta");
+                                    partida.mostrarResultados();
                                 }
                                 int tuberiasUsadas = partida.getTuberiasUsadas();
                                 int tiempoEnSegundos = partida.getTiempoEnSegundos();
                                 bst.agregarPuntaje(tuberiasUsadas, tiempoEnSegundos, partida);
                                 mostrarMenuJuego = false;
-
-
-
                                 break;
 
                             case 2:
