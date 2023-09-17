@@ -9,20 +9,6 @@ public class Partida {
     private long tiempoFin;
     private int tuberiasUsadas;
 
-    public void ponerTuberia() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Escriba la posición, primero la fila y luego la columna");
-        int fila = scanner.nextInt();
-
-        int columna = scanner.nextInt();
-        System.out.println("Escriba el tipo de tubería =, ||, o.");
-
-        char tipoTuberia = scanner.next().charAt(0);
-
-        this.tablero.modificar(fila, columna, tipoTuberia);
-        this.tablero.mostrar();
-    }
 
     public Partida(String nombreJugador) {
         this.nombreJugador = nombreJugador;
