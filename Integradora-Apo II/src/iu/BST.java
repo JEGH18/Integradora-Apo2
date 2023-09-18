@@ -1,10 +1,5 @@
 package iu;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 public class BST {
     private Node root;
 
@@ -14,8 +9,10 @@ public class BST {
 
     public void agregarPuntaje(int tuberiasUsadas, int tiempoEnSegundos, Partida partida) {
         int puntos = (100 - tuberiasUsadas) * 10 - tiempoEnSegundos;
-        root = insertar(root, puntos, partida.getNombreJugador(), partida);
+        String nombreJugador = partida.getNombreJugador(); // Obtén el nombre del jugador
+        root = insertar(root, puntos, nombreJugador, partida); // Pasa el nombre del jugador aquí
     }
+        
 
     private Node insertar(Node nodo, int puntos, String valor, Partida partida) {
         if (nodo == null) {
@@ -53,4 +50,5 @@ public class BST {
             inOrden(nodo.getDerecha());
         }
     }
+    
 }

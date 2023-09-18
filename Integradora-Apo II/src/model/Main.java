@@ -107,19 +107,35 @@ public class Main {
 
                                     if (respuesta.equals("N") || respuesta.equals("n")) {
                                         ponerTuberia = false;
+                                        partida.setTiempoFin(System.currentTimeMillis());
                                     }
                                 }
-                                partida.simular();
+
+
                                 if (partida.esSolucionCorrecta()) {
-                                    System.out.println("La solución es correcta");
-                                } else {
-                                    System.out.println("La solución no es correcta");
+
                                     partida.mostrarResultados();
+                                    System.out.println("La solución es correcta\n");
+                                    System.out.println("Tiempo total: " + partida.getTiempoEnSegundos() + " segundos");
+                                    bst.agregarPuntaje(partida.getTuberiasUsadas(), partida.getTiempoEnSegundos(), partida);
+
+                                    // Mostrar la tabla de puntuaciones
+                                    System.out.println("Tabla de puntuaciones:");
+                                    bst.mostrarEnOrden();
+
+
+                                } else {
+                                    partida.mostrarResultados();
+                                    System.out.println("La solución no es correcta");
+                                    System.out.println("Tiempo total: " + partida.getTiempoEnSegundos() + " segundos");
+                                    bst.agregarPuntaje(partida.getTuberiasUsadas(), partida.getTiempoEnSegundos(), partida);
+
+                                    // Mostrar la tabla de puntuaciones
+                                    System.out.println("Tabla de puntuaciones:");
+                                    bst.mostrarEnOrden();
+    
                                 }
-                                int tuberiasUsadas = partida.getTuberiasUsadas();
-                                int tiempoEnSegundos = partida.getTiempoEnSegundos();
-                                bst.agregarPuntaje(tuberiasUsadas, tiempoEnSegundos, partida);
-                                mostrarMenuJuego = false;
+
                                 break;
 
                             case 2:

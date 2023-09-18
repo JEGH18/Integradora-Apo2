@@ -8,8 +8,8 @@ public class Partida {
     private long tiempoInicio;
     private long tiempoFin;
     private int tuberiasUsadas;
-
-
+    
+    
     public Partida(String nombreJugador) {
         this.nombreJugador = nombreJugador;
         this.tablero = new Tablero();
@@ -37,7 +37,7 @@ public class Partida {
     }
 
     public int getPuntos() {
-        long tiempoEnSegundos = (tiempoFin - tiempoInicio) / 1000;
+        long tiempoEnSegundos = getTiempoEnSegundos();
         return (100 - tuberiasUsadas) * 10 - (int)tiempoEnSegundos;
     }
 
@@ -54,9 +54,10 @@ public class Partida {
     }
 
     public void mostrarResultados() {
+        
         System.out.println("Resultados de la partida:");
         System.out.println("Nombre del jugador: " + this.nombreJugador);
-        System.out.println("Tiempo de la partida: " + (this.tiempoFin - this.tiempoInicio) / 1000 + " segundos");
+
         System.out.println("Tuberías usadas: " + this.tuberiasUsadas);
     }
 
@@ -97,7 +98,12 @@ public class Partida {
     }
 
     public int getTiempoEnSegundos() {
-        return (int) ((this.tiempoFin - this.tiempoInicio) / 1000);
+        if (this.tiempoFin > 0) { // Asegurarse de que tiempoFin se ha establecido
+            return (int) ((this.tiempoFin - this.tiempoInicio) / 1000);
+        } else {
+            return 0; // Devolver 0 si tiempoFin aún no se ha establecido
+        }
+        
     }
 
     public void setTuberiasUsadas(int tuberiasUsadas) {

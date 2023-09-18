@@ -5,6 +5,7 @@ import java.util.LinkedList;
 public class Tablero {
     private LinkedList<LinkedList<Character>> tablero;
     private Partida partida;
+    private boolean[][] visitado;
 
     public Tablero() {
         this.tablero = new LinkedList<>();
@@ -58,35 +59,9 @@ public class Tablero {
     }
 
     public boolean esSolucionCorrecta() {
-        // Implementar un algoritmo para verificar si la solución es correcta
-        // Encontrar la posición de la fuente (F)
-        int filaF = -1, columnaF = -1;
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (this.tablero.get(i).get(j) == 'F') {
-                    filaF = i;
-                    columnaF = j;
-                    break;
-                }
-            }
-            if (filaF != -1) {
-                break;
-            }
-        }
-        // Realizar una búsqueda en profundidad o en amplitud desde la fuente
-        return dfs(filaF, columnaF);
-    }
-
-    private boolean dfs(int fila, int columna) {
-        // Verificar si hemos llegado al drenaje (D)
-        if (this.tablero.get(fila).get(columna) == 'D') {
-            return true;
-        }
-        return false;
-    }
-
-    public void simular() {
-        // Implementar un algoritmo para simular el flujo de agua
+        // Reiniciar la matriz de visitados antes de cada verificación
+        this.visitado = new boolean[8][8];
+    
         // Encontrar la posición de la fuente (F)
         int filaF = -1, columnaF = -1;
         for (int i = 0; i < 8; i++) {
@@ -101,9 +76,67 @@ public class Tablero {
                 break;
             }
         }
-        // Realizar una búsqueda en profundidad o en amplitud desde la fuente
-        dfs(filaF, columnaF);
+    
+        // Iniciar la verificación desde la fuente con todas las direcciones posibles
+        return dfs(filaF, columnaF, '|') || dfs(filaF, columnaF, '=');
     }
+    
+
+    private boolean dfs(int fila, int columna, char direccion) {
+        // Verificar si hemos llegado al drenaje (D)
+        if (this.tablero.get(fila).get(columna) == 'D') {
+            return true;
+        }
+    
+        // Marcar la celda actual como visitada
+        this.visitado[fila][columna] = true;
+    
+        // Explorar las celdas vecinas
+        int[] dx = {-1, 0, 1, 0}; // Desplazamiento en x (fila)
+        int[] dy = {0, 1, 0, -1}; // Desplazamiento en y (columna)
+        char[] direcciones = {'|', '=', '|', '='}; // Direcciones correspondientes a los desplazamientos
+        for (int i = 0; i < 4; i++) {
+            if (direcciones[i] == direccion || this.tablero.get(fila).get(columna) == 'o') {
+                int nuevaFila = fila + dx[i];
+                int nuevaColumna = columna + dy[i];
+    
+                // Verificar si la nueva posición es válida y no ha sido visitada
+                if (nuevaFila >= 0 && nuevaFila < 8 && nuevaColumna >= 0 && nuevaColumna < 8 && !this.visitado[nuevaFila][nuevaColumna]) {
+                    if (dfs(nuevaFila, nuevaColumna, direcciones[(i+2)%4])) { // La dirección opuesta
+                        return true;
+                    }
+                }
+            }
+        }
+    
+        return false;
+    }
+    
+    public void simular() {
+        // Reiniciar la matriz de visitados antes de cada simulación
+        this.visitado = new boolean[8][8];
+    
+        // Encontrar la posición de la fuente (F)
+        int filaF = -1, columnaF = -1;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j< 8; j++) {
+                if (this.tablero.get(i).get(j) == 'F') {
+                    filaF = i;
+                    columnaF = j;
+                    break;
+                }
+            }
+            if (filaF != -1) {
+                break;
+            }
+        }
+    
+        // Iniciar la simulación desde la fuente con todas las direcciones posibles
+        dfs(filaF, columnaF, '|');
+        dfs(filaF, columnaF, '=');
+    }
+    
+    
 
     public void mostrar() {
         // Mostrar el tablero en consola
