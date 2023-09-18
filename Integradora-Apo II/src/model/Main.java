@@ -149,7 +149,7 @@ public class Main {
                                 break;
 
                             case 3:
-                                System.out.println("Saliendo de PipeMania");
+                                System.out.println("Saliendo de la partida");
                                 System.exit(0);
                                 mostrarMenuJuego = false;
                                 break;
@@ -159,7 +159,6 @@ public class Main {
                                 break;
 
                         }
-                        mostrarMenuPrincipal = true;
                     }
 
                 case 2:
@@ -170,10 +169,12 @@ public class Main {
                     }
                     break;
 
-                case 3:
+                    case 3:
                     System.out.println("Saliendo de PipeMania");
                     System.exit(0);
+                    mostrarMenuPrincipal = false;
                     break;
+                
 
                 default:
                     System.out.println("Opción inválida");

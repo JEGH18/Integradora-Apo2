@@ -25,7 +25,7 @@ public class Tablero {
         do {
             filaD = (int) (Math.random() * 8);
             columnaD = (int) (Math.random() * 8);
-        } while (Math.abs(filaD - filaF) + Math.abs(columnaD - columnaF) < 2); // Asegurar una distancia mínima de 10
+        } while (Math.abs(filaD - filaF) + Math.abs(columnaD - columnaF) < 10); // Asegurar una distancia mínima de 10
         this.tablero.get(filaD).set(columnaD, 'D');
     }
 
